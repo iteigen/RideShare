@@ -1,4 +1,4 @@
-package RideShare;
+
 public class Person{
     //fields
     private int destination;

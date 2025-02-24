@@ -1,4 +1,3 @@
-package RideShare;
 
 public class Tester {
     public static void main(String[] args) {
@@ -8,6 +7,11 @@ public class Tester {
         System.out.println(a);
         System.out.println(b);
         System.out.println(c);
+
+        Car n = new Car(5,9);
+        System.out.println(n);
+        n.addPassenger(a);
+        System.out.println(n);
     }
     
 }
