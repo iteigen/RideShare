@@ -18,11 +18,26 @@ public class Car {
     public void addPassenger(Person p){
         if(passengers.size()>=3){
             System.out.println("ERROR: No room!");
+        }else if(p.getDirection() != direction){
+            System.out.println("ERROR: Trying to add person in wrong direction!");
         }else{
             passengers.add(p);
         }
     }
+    public void move(){
+        if(currentLocation == destination){
+            return; //kick out early before trying to move
+        }
+
+        if(direction){
+            currentLocation++;
+        } else{
+            currentLocation--;
+        }
+    }
+    
     public boolean hasRoom(){
+
         return passengers.size()<3;
     }
     public int getDestination(){
@@ -34,9 +49,22 @@ public class Car {
     public int getLocation(){
         return currentLocation;
     }
+    // Method for handing back a person that is eligible to be dropped off, also removes the person from the car
+    // @return one person eligible to be dropped off, null if nobody is available
+    public Person unload(){
+        for (int i = 0; i<passengers.size(); i++){
+            Person a = passengers.get(i);
+            if(a.getDestination()==currentLocation){
+                return passengers.remove(i);
+            }
+        }
+        return null;
+        
+    }
 
     public String toString(){
         return super.toString() + " Destination: " + destination + " Current location: " + currentLocation + " Going right? " + direction + " Passengers: " + passengers;
     }
+
     
 }
