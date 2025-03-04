@@ -21,7 +21,7 @@ public class Person{
     public boolean getDirection(){
         return direction;
     }
-    public int startLocation(){
+    public int getStartLocation(){
         return startLocation;
     }
 

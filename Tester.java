@@ -14,6 +14,12 @@ public class Tester {
         System.out.println(n);
 
         System.out.println(n.unload());
+
+        Road r = new Road();
+        r.toString();
+        r.pickupPassengers();
+        r.moveCars();
+        r.toString();
     }
     
 }

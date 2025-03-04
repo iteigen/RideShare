@@ -13,5 +13,17 @@ public class Station {
         completed = new ArrayList<Person>();
         number = myNumber;
     }
+    public ArrayList<Person> getWaitingLeft(){
+        return waitingLeft;
+    }
+    public ArrayList<Person> getWaitingRight(){
+        return waitingRight;
+    }
+    public ArrayList<Person> getCompleted(){
+        return completed;
+    }
+    public int getNumber(){
+        return number;
+    }
     
 }
