@@ -19,7 +19,10 @@ public class Tester {
         r.toString();
         r.pickupPassengers();
         r.moveCars();
-        r.toString();
+        System.out.println(r.toString());
+        r.pickupPassengers();
+        r.moveCars();
+        System.out.println(r.toString());
     }
     
 }

@@ -44,8 +44,12 @@ public class Road {
         }
     }
     public void moveCars(){
+        Person unloaded;
         for (int i = 0; i< cars.size();i++){
-            completed.add(cars.get(i).unload());
+            unloaded = cars.get(i).unload();
+            if(unloaded != null){
+                completed.add(unloaded);
+            }
             cars.get(i).move();
         }
     }
@@ -62,8 +66,8 @@ public class Road {
         }
         if(completed.size()>0){
         s+="Completed people: \n";
-        for(Person a:completed){
-            s+=a.toString();
+        for(int i = 0; i<completed.size();i++){
+            s+=completed.get(i).toString();
             s+="\n";
         }
     }
