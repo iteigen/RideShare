@@ -49,6 +49,9 @@ public class Car {
     public int getLocation(){
         return currentLocation;
     }
+    public int numPassengers(){
+        return passengers.size();
+    }
     // Method for handing back a person that is eligible to be dropped off, also removes the person from the car
     // @return one person eligible to be dropped off, null if nobody is available
     public Person unload(){

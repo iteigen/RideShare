@@ -6,9 +6,9 @@ public class Road {
     private ArrayList<Car> cars;
     private ArrayList<Person> completed;
 
-    public Road(){
+    public Road(int p, int c){
         cars=new ArrayList<Car>();
-        for (int i = 0; i<20; i++){
+        for (int i = 0; i<c; i++){
             int rand = (int)(Math.random() * 32 + 1);
             int dest = (int)(Math.random()*2+1);
             int desti;
@@ -20,7 +20,7 @@ public class Road {
             cars.add(new Car(desti, rand));
         }
         persons=new ArrayList<Person>();
-        for (int i = 0; i<50;i++){
+        for (int i = 0; i<p;i++){
             int rand = (int)(Math.random() * 32 + 1);
             int rand2 = (int)(Math.random() * 32 + 1);
             persons.add(new Person(rand,rand2));
@@ -37,7 +37,11 @@ public class Road {
             if(cars.get(i).hasRoom()){
                 for(int j = 0; j<persons.size();j++){
                     if(persons.get(j).getStartLocation()==cars.get(i).getLocation()){
-                        cars.get(i).addPassenger(persons.remove(j));
+                        if(persons.get(j).getDirection()==cars.get(i).getDirection()){
+                            if(cars.get(i).hasRoom()){
+                                cars.get(i).addPassenger(persons.remove(j));
+                            }
+                        }
                     }
                 }
             }
@@ -45,13 +49,23 @@ public class Road {
     }
     public void moveCars(){
         Person unloaded;
+        int a;
         for (int i = 0; i< cars.size();i++){
+            a = cars.get(i).numPassengers();
+            for(int j = 0; j<a;j++){
             unloaded = cars.get(i).unload();
             if(unloaded != null){
                 completed.add(unloaded);
             }
+        }
             cars.get(i).move();
         }
+    }
+    public int getCompleted(){
+        return completed.size();
+    }
+    public int getWaiting(){
+        return persons.size();
     }
     public String toString(){
         String s = "Cars: \n";
